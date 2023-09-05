@@ -4,6 +4,7 @@ import express from "express";
 import { Client } from "pg";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
+import { leaderboardRoutes } from "./routes/leaderboard";
 
 dotenv.config(); //Read .env file lines as though they were env vars.
 
@@ -38,6 +39,8 @@ async function connectToDBAndStartListening() {
     console.log("Attempting to connect to db");
     await client.connect();
     console.log("Connected to db!");
+
+    app.use("/leaderboard", leaderboardRoutes(client));
 
     const port = getEnvVarOrFail("PORT");
     app.listen(port, () => {
