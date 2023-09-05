@@ -1,11 +1,11 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import morgan from "morgan";
 import { Client } from "pg";
+import { leaderboardRoutes } from "./routes/leaderboard";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
-import { leaderboardRoutes } from "./routes/leaderboard";
-import morgan from "morgan";
 
 dotenv.config(); //Read .env file lines as though they were env vars.
 
