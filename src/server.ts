@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import { Client } from "pg";
-import { createLeaderboardRouter } from "./routes/leaderboard";
+import createLeaderboardRouter from "./routes/leaderboard";
 import createRootRouter from "./routes/root";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";

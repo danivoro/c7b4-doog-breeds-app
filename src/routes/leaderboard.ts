@@ -8,10 +8,10 @@ interface LeaderboardRow {
     votes: number;
 }
 
-export function createLeaderboardRouter(client: Client): Router {
+export default function createLeaderboardRouter(client: Client): Router {
     const router = express.Router();
 
-    router.get<{}, LeaderboardRow[] | string>(
+    router.get<{}, LeaderboardRow[]>(
         "/",
         useErrorHandler(async (_req, res) => {
             const result = await client.query(
@@ -21,7 +21,7 @@ export function createLeaderboardRouter(client: Client): Router {
         })
     );
 
-    router.put<{}, LeaderboardRow | string, { breed: string }>(
+    router.put<{}, LeaderboardRow, Pick<LeaderboardRow, "breed">>(
         "/",
         useErrorHandler(async (req, res) => {
             const result = await client.query(
