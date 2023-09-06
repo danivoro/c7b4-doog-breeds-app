@@ -1,6 +1,7 @@
 import express, { Router } from "express";
 import { Client } from "pg";
 import { useErrorHandler } from "../utils/errorHandler";
+import { z } from "zod";
 
 interface LeaderboardRow {
     id: number;
@@ -24,6 +25,8 @@ export default function createLeaderboardRouter(client: Client): Router {
     router.put<{}, LeaderboardRow, Pick<LeaderboardRow, "breed">>(
         "/",
         useErrorHandler(async (req, res) => {
+            const mySchema = z.string().min(1);
+            mySchema.parse(req.body.breed);
             const result = await client.query(
                 `INSERT INTO leaderboard (breed)
                     VALUES ($1)
