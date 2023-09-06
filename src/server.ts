@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import { Client } from "pg";
-import { leaderboardRoutes } from "./routes/leaderboard";
+import { createLeaderboardRouter } from "./routes/leaderboard";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
 
@@ -35,14 +35,14 @@ app.get("/health-check", async (_req, res) => {
     }
 });
 
+app.use("/leaderboard", createLeaderboardRouter(client));
+
 connectToDBAndStartListening();
 
 async function connectToDBAndStartListening() {
     console.log("Attempting to connect to db");
     await client.connect();
     console.log("Connected to db!");
-
-    app.use("/leaderboard", leaderboardRoutes(client));
 
     const port = getEnvVarOrFail("PORT");
     app.listen(port, () => {

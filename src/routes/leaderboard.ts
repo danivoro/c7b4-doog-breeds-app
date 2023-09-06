@@ -7,7 +7,7 @@ interface LeaderboardRow {
     votes: number;
 }
 
-export function leaderboardRoutes(client: Client): Router {
+export function createLeaderboardRouter(client: Client): Router {
     const router = express.Router();
 
     router.get<{}, LeaderboardRow[] | string>("/", async (_req, res) => {
