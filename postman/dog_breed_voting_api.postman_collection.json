@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "7866ef25-48eb-408b-b56a-4d67a0f68517",
+		"name": "Dog Breed Voting API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17457154"
+	},
+	"item": [
+		{
+			"name": "Top 10 dog breeds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/leaderboard",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"leaderboard"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Most Popular Breeds",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c7-b4-dog-breeds-server.onrender.com/leaderboard",
+							"protocol": "https",
+							"host": [
+								"c7-b4-dog-breeds-server",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"leaderboard"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 05 Sep 2023 10:44:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "801de027fcea3697-LHR"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"29-rikorGZ+onEIp3DXFKGYToEAk4A\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 13,\n        \"breed\": \"Shiba Inu\",\n        \"votes\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Vote for breed",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"breed\": \"Shiba Inu\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/leaderboard",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"leaderboard"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Vote for Shiba Inu",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"breed\": \"Shiba Inu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://c7-b4-dog-breeds-server.onrender.com/leaderboard",
+							"protocol": "https",
+							"host": [
+								"c7-b4-dog-breeds-server",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"leaderboard"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-xRktKqMxXO6M0xnB5uMa+FSnGlo\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 05 Sep 2023 10:37:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 12,\n    \"breed\": \"Shiba Inu\",\n    \"votes\": 1\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://c7-b4-dog-breeds-server.onrender.com",
+			"type": "string"
+		}
+	]
+}
