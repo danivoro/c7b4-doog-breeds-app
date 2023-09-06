@@ -25,6 +25,8 @@ app.use("/leaderboard", createLeaderboardRouter(client));
 
 app.use(errorHandler);
 
+app.use("/leaderboard", createLeaderboardRouter(client));
+
 connectToDBAndStartListening();
 
 async function connectToDBAndStartListening() {
