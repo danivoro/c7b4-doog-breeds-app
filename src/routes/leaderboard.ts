@@ -9,6 +9,8 @@ interface LeaderboardRow {
     votes: number;
 }
 
+const breedSchema = z.string().min(1);
+
 export default function createLeaderboardRouter(client: Client): Router {
     const router = express.Router();
 
@@ -25,8 +27,7 @@ export default function createLeaderboardRouter(client: Client): Router {
     router.put<{}, LeaderboardRow, Pick<LeaderboardRow, "breed">>(
         "/",
         useErrorHandler(async (req, res) => {
-            const mySchema = z.string().min(1);
-            mySchema.parse(req.body.breed);
+            breedSchema.parse(req.body.breed);
             const result = await client.query(
                 `INSERT INTO leaderboard (breed)
                     VALUES ($1)
